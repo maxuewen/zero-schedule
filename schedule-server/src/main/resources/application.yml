@@ -1,0 +1,27 @@
+server:
+  port: 9090
+
+spring:
+  profiles:
+    active: development
+
+  application:
+    name: ${common.application-name}
+
+  datasource:
+    url: jdbc:mysql://${common.mysql.ip}:${common.mysql.port}}/schedule_stage1?characterEncoding=UTF-8&rewriteBatchedStatements=true&allowMultiQueries=true
+    username: ${common.mysql.username}
+    password: ${common.mysql.password}
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 40
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: false
+    filters: stat,wall
